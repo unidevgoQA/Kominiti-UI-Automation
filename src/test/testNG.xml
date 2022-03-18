@@ -10,9 +10,9 @@
     </test>
     <test name="HomePage">
         <classes>
-            <class name="main.java.testcases.HomepageTest">
+            <class name="main.java.testcases.HomepageTest" />
 
-            </class>
+
         </classes>
     </test>
 </suite>

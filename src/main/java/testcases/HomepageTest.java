@@ -20,7 +20,7 @@ import applicationsettings.ApplicationSettings;
 public class HomepageTest extends BaseTest {
     @SuppressWarnings("unused")
     HomePage homePage;
-    @Test(dataProvider = "credentials", dataProviderClass = TestDataProvider.class,priority = 3)
+  @Test(dataProvider = "credentials", dataProviderClass = TestDataProvider.class,priority = 3)
     public void validateHomeFunctionality(String post) {
         String post1 = "Test post";
 
