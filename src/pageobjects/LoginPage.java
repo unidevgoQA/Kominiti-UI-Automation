@@ -30,40 +30,40 @@ public class LoginPage extends Base {
     private final DriverActions driverActions;
 
     // Start: Login screen web elements
- @FindBy(xpath = "//*[@id=\"email-undefined-undefined-48700\"]")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
  WebElement signInemail;
- @FindBy(xpath = "//*[@id=\"password-undefined-undefined-19012\"]")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[2]/div[1]/div[1]/div[1]/input[1]")
  WebElement signInPassword;
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[2]/form/div[3]/div/button")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[3]/div[1]/button[1]")
  WebElement signInforgetPassword;
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/button")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[4]/button[1]")
  WebElement signInButton;
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[2]/div/p[2]/a")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/div[1]/p[2]/a[1]")
  WebElement redirectTosignUp;
  @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[4]/button[1]")
  WebElement wrongmailorpass;
- @FindBy(xpath = "//*[@id=\"email-undefined-undefined-37564\"]")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
  WebElement forgetpassEmail;
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/button")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[2]/form[1]/div[4]/button[1]")
  WebElement restorepassbtn;
 
 // sign up field elements:
 
-   @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div[2]/button")
+   @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div[2]/div/div[1]/div[2]/button")
    WebElement redirect;
    //will redirect to the sign up page.
 
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/div")
+ @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/h4")
  WebElement accountType;
  @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div/div[2]/div")
  WebElement jobseeker;
- @FindBy(xpath = "//*[@id=\"sig-in-nameinput-undefined-undefined-25135\"]")
+ @FindBy(xpath = "/html/body/div[1]/div/div[2]/div[2]/div[2]/div/div/div[2]/form/div[2]/div/div[1]/div/input")
  WebElement signUpName;
- @FindBy(xpath = "//*[@id=\"email-undefined-undefined-32794\"]")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/div[1]/div[1]/input[1]")
  WebElement signUpemail;
- @FindBy(xpath = "//*[@id=\"password-undefined-undefined-44240\"]")
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/div[1]/div[1]/input[1]")
  WebElement signUpPassword;
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div/div[2]/form/div[5]/div/div/input")
+ @FindBy(xpath = "//input[@name='isAcceptTerm']")
  WebElement signUpcheckbox;
  @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div/div[2]/form/div[6]/button")
  WebElement getstatedButton;
@@ -149,13 +149,20 @@ public class LoginPage extends Base {
             driverActions.clickOnWebElementWithActionsClass(signInButton);
             step++;
             System.out.println(step + ". 'Login' button clicked.");
+            implicitlyWait(10);
             boolean isDisplayed =wrongmailorpass.isDisplayed();
+            step++;
             if (isDisplayed)
             {
                 driverActions.clickOnWebElementWithActionsClass(signInforgetPassword);
+                step++;
                 driverActions.typeText(forgetpassEmail,email);
+                step++;
                 driverActions.clickOnWebElementWithActionsClass(restorepassbtn);
+                step++;
             }
+
+
 
 
             return true;

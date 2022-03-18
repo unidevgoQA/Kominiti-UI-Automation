@@ -179,13 +179,8 @@ public class ApplicationSettings {
         return "signUp";
     }
 
-    public static String getApplicationDataTable() {
-        return "ApplicationForm";
-    }
 
-    public static String getApplicationDataSheetname() {
-        return "ApplicationForm";
     }
 
 
-}
+
