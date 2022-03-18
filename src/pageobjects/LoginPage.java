@@ -71,6 +71,27 @@ public class LoginPage extends Base {
  WebElement signinRedirect;
  @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]")
  WebElement emailAlreadytaken;
+    @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[1]/div/div/div[4]/ul/li[1]/a")
+    WebElement NavigatetoHome;
+    @FindBy(xpath = "//textarea[@placeholder='Share what is in your mind...']")
+    WebElement shareWinmind;
+    @FindBy(xpath = "//button[@class='btn btn-post waves-effect waves-light']")
+    WebElement postbutton;
+    @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div")
+    WebElement joinPicoftheWeekC;
+    @FindBy(xpath = "//*[@id=\"body\"]/div[3]/div[2]/div/div[2]/div/div/div[3]/button")
+    WebElement Enterpicoftheweek;
+    @FindBy(xpath = "//*[@id=\"body\"]/div[3]/div[2]/div/div[1]/span/img")
+    WebElement Exitfromuploadp;
+    @FindBy(xpath = "//div[5]//div[1]//div[1]//div[1]//div[2]//a[1]//h4[1]")
+    WebElement ScrollToElement;
+    @FindBy(xpath = "//span[normalize-space()='Trending topics']")
+    WebElement trendingTopic;
+    @FindBy(xpath = "//span[normalize-space()='Wall of fame']")
+    WebElement Walloffame;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/a[1]/*[name()='svg'][1]")
+    WebElement Likeapost;
+
 
 
     // End: home screen web elements
@@ -98,6 +119,7 @@ public class LoginPage extends Base {
 
             driverActions.clickOnWebElementWithActionsClass(redirect);
             System.out.println("Redirecting to the sign up page");
+            implicitlyWait(5);
             driverActions.clickOnWebElementWithActionsClass(accountType);
             System.out.println("Choosen The Account Type");
             driverActions.clickOnWebElementWithActionsClass(jobseeker);
@@ -183,6 +205,65 @@ public class LoginPage extends Base {
             System.out.println(ex + "\n");
             return false;
         }
+    }
+    public boolean home(TestDataModel dataModel) {
+
+        boolean flag= false;
+
+        try {
+            int step = 0;
+
+            System.out.println("\n## Started Navigating To The Home Page. ##\n");
+            driverActions.clickOnWebElementWithActionsClass(NavigatetoHome);
+            step++;
+
+
+            System.out.println("Navigated to the home page");
+            implicitlyWait(10);
+            driverActions.clickOnWebElementWithActionsClass(shareWinmind);
+            step++;
+            System.out.println("Clicked on the input field");
+            implicitlyWait(5);
+            driverActions.typeText(shareWinmind, dataModel.getPost());
+            step++;
+
+            System.out.println("Shared What's In Mind");
+            //implicitlyWait(2);
+            driverActions.clickOnWebElementUsingJavaScript(postbutton);
+            implicitlyWait(10);
+            step++;
+            System.out.println("Posted the shared text");
+            driverActions.scrollToWebElementWithJavaScript(ScrollToElement);
+            step++;
+            System.out.println("Scrolled Down");
+//            //implicitlyWait(2);
+            driverActions.clickOnWebElementWithActionsClass(Likeapost);
+            System.out.println("Liked a post");
+            driverActions.clickOnWebElementWithActionsClass(joinPicoftheWeekC);
+            step++;
+            System.out.println("Clicked join now button on pic of the week challenge");
+            driverActions.clickOnWebElementWithActionsClass(Enterpicoftheweek);
+            step++;
+            System.out.println("Clicked Enter to join pic of the week challenge");
+            driverActions.clickOnWebElementWithActionsClass(Exitfromuploadp);
+            step++;
+            System.out.println("Exit from the upload modal of the pic of the week challenge");
+//
+//            driverActions.
+            driverActions.clickOnWebElementWithActionsClass(trendingTopic);
+            step++;
+            System.out.println("Navigated to the trending topic");
+            driverActions.clickOnWebElementWithActionsClass(Walloffame);
+
+            System.out.println("Navigated to the wall of fame page");
+            flag=true;
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+
+
+        }
+        return flag;
     }
 
 }

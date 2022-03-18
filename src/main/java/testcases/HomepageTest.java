@@ -19,25 +19,28 @@ import applicationsettings.ApplicationSettings;
 @SuppressWarnings("ThrowablePrintedToSystemOut")
 public class HomepageTest extends BaseTest {
     @SuppressWarnings("unused")
-    HomePage Homepage;
+    HomePage homePage;
     @Test(dataProvider = "credentials", dataProviderClass = TestDataProvider.class,priority = 3)
     public void validateHomeFunctionality(String post) {
+        String post1 = "Test post";
 
         try {
 
             initializeTest("Validate Home Functionality", "This test will verify that the home page is functional", "Sanity Test");
 
-            Homepage = PagesFactory.getHomePage();
+            homePage = PagesFactory.getHomePage();
             TestDataModel testData = new TestDataModel();
 
-            testData.setPost(post);
-            System.out.println(post);
+            testData.setPost(post1);
+            System.out.println(post1);
 
 
 
-            System.out.println("\nStarting signup into the site.\\n");
-            boolean signupResult = Homepage.home(testData);
-//            Assert.assertTrue(loginResult, "Login failed");
+            System.out.println("\nStarting Home Navigation into the site.\\n");
+            boolean signupResult = homePage.home(testData);
+            Assert.assertTrue(signupResult, "Login failed");
+//            Assert.assertNotNull(signupResult);
+            System.out.println(signupResult);
 
         } catch (Exception ex) {
             System.out.println(ex);

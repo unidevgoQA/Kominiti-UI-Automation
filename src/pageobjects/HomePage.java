@@ -34,7 +34,7 @@ public class HomePage extends Base {
     WebElement NavigatetoHome;
     @FindBy(xpath = "//textarea[@placeholder='Share what is in your mind...']")
     WebElement shareWinmind;
-    @FindBy(xpath = "//*[@id=\"react-tabs-31\"]/div/div[2]/div/div[2]/div[2]/button/span")
+    @FindBy(xpath = "//span[normalize-space()='Post']")
     WebElement postbutton;
     @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div")
     WebElement joinPicoftheWeekC;
@@ -44,10 +44,12 @@ public class HomePage extends Base {
     WebElement Exitfromuploadp;
     @FindBy(xpath = "//*[@id=\"react-tabs-33\"]/div/div[3]/div[2]/div/div[39]/div/div[1]/div[2]/div/div/a/div/img")
     WebElement ScrollToElement;
-    @FindBy(xpath = "//*[@id=\"react-tabs-34\"]/span")
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[2]/span[1]")
     WebElement trendingTopic;
-    @FindBy(xpath = "//*[@id=\"react-tabs-36\"]/span")
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[3]/span[1]")
     WebElement Walloffame;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/a[1]/span[1]")
+    WebElement Likeapost;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -67,7 +69,7 @@ public class HomePage extends Base {
 
 
             System.out.println("Navigated to the home page");
-            implicitlyWait(5);
+           implicitlyWait(5);
             driverActions.clickOnWebElementWithActionsClass(shareWinmind);
             step++;
             System.out.println("Clicked on the input field");
@@ -76,11 +78,13 @@ public class HomePage extends Base {
             step++;
 
             System.out.println("Shared What's In Mind");
-            implicitlyWait(2);
+            //implicitlyWait(2);
             driverActions.clickOnWebElementUsingJavaScript(postbutton);
             step++;
             System.out.println("Posted the shared text");
-            implicitlyWait(2);
+            //implicitlyWait(2);
+            driverActions.clickOnWebElementWithActionsClass(Likeapost);
+            System.out.println("Liked A Post");
             driverActions.clickOnWebElementWithActionsClass(joinPicoftheWeekC);
             step++;
             System.out.println("Clicked join now button on pic of the week challenge");
