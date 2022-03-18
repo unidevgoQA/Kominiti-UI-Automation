@@ -104,7 +104,7 @@ public class LoginPage extends Base {
             System.out.println("Entered Email Address");
             driverActions.typeText(signUpPassword,Password);
             System.out.println("Entered Password");
-            driverActions.clickOnWebElementWithActionsClass(signUpcheckbox);
+            driverActions.clickOnWebElementUsingJavaScript(signUpcheckbox);
             System.out.println("Accepted the terms and conditions");
             driverActions.clickOnWebElementWithActionsClass(getstatedButton);
             System.out.println("Sign up form submitted");
