@@ -53,7 +53,7 @@ public class LoginPage extends Base {
    WebElement redirect;
    //will redirect to the sign up page.
 
- @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/h4")
+ @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/div")
  WebElement accountType;
  @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div/div[2]/div")
  WebElement jobseeker;
@@ -69,10 +69,14 @@ public class LoginPage extends Base {
  WebElement getstatedButton;
  @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div/div[2]/div/p[2]/a")
  WebElement signinRedirect;
+ @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]")
+ WebElement emailAlreadytaken;
 
 
     // End: home screen web elements
-
+    //Landing page to navigations bar's page's:
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[4]/ul[1]/li[1]/a[1]")
+    WebElement AfterloginNavtohome;
     // Initializing the driver for behavior tab on a specific story page
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -108,8 +112,16 @@ public class LoginPage extends Base {
             System.out.println("Accepted the terms and conditions");
             driverActions.clickOnWebElementWithActionsClass(getstatedButton);
             System.out.println("Sign up form submitted");
-            driverActions.clickOnWebElementWithActionsClass(signinRedirect);
-            System.out.println("Redirecting to the sign in page");
+            boolean isDisplayed = emailAlreadytaken.isDisplayed();
+            if (isDisplayed)
+            {
+                driverActions.clickOnWebElementWithActionsClass(signinRedirect);
+                System.out.println("Redirecting to the sign in page");
+            }
+//            driverActions.clickOnWebElementWithActionsClass(signinRedirect);
+//            System.out.println("Redirecting to the sign in page");
+
+
 
 
 

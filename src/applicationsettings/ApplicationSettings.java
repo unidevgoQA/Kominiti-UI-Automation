@@ -19,34 +19,33 @@ public class ApplicationSettings {
     private static String emailAddress;
     private static String activationMessage;
     private static String environmentType;
-    
-    
-	// Environment Details for Production
+
+
+    // Environment Details for Production
     private static final String productionUrl = "";
     private static final String devUrl = "https://staging.kominiti.com/";
     private static final String productionTestDataFilePath = ".//src//testdata//production_test_data.xls";
     private static final String devTestDataFilePath = ".//src//testdata//dev_test_data.xls";
 
-    private ApplicationSettings () { // private constructor
+    private ApplicationSettings() { // private constructor
     }
 
     public static void setUp(String os, String browser, String environment) {
 
-        if(os != null && os.equalsIgnoreCase("Win"))
+        if (os != null && os.equalsIgnoreCase("Win"))
             fileExt = ".exe";
         else
             fileExt = "";
 
-        if(browser == null)
+        if (browser == null)
             browserName = "Chrome";
         else
             browserName = browser;
 
-        if(environment.equalsIgnoreCase("Production")) {
+        if (environment.equalsIgnoreCase("Production")) {
             url = productionUrl;
             environmentType = "prod";
-        }
-        else if(environment.equalsIgnoreCase("Dev")) {
+        } else if (environment.equalsIgnoreCase("Dev")) {
             url = devUrl;
             environmentType = "dev";
         }
@@ -60,12 +59,14 @@ public class ApplicationSettings {
         return url;
     }
 
-    public static String getCryptoDepositUrl() {return url + "/clientDashboard/cryptoDeposit";}
+    public static String getCryptoDepositUrl() {
+        return url + "/clientDashboard/cryptoDeposit";
+    }
 
     public static String getEnvironmentType() {
         return environmentType;
     }
-    
+
     public static String getChromeDriverName() {
         return "webdriver.chrome.driver";
     }
@@ -98,89 +99,104 @@ public class ApplicationSettings {
         return ".//lib//MicrosoftWebDriver" + fileExt;
     }
 
-    public static String getProductionTestDataFilePath(){
+    public static String getProductionTestDataFilePath() {
         return productionTestDataFilePath;
     }
-    
-    public static String getDevTestDataFilePath(){
+
+    public static String getDevTestDataFilePath() {
         return devTestDataFilePath;
     }
 
-    public static String getLoginCredentialsSheetName(){
+    public static String getLoginCredentialsSheetName() {
         return "login";
     }
 
-    public static String getCryptoDepositDataTableName() { return "cryptoDeposit"; }
+    public static String getCryptoDepositDataTableName() {
+        return "cryptoDeposit";
+    }
 
-    public static String getProfileDataTableName() { return "profile"; }
+    public static String getProfileDataTableName() {
+        return "profile";
+    }
 
-    public static String getTaxDataTableName() { return "taxData"; }
+    public static String getTaxDataTableName() {
+        return "taxData";
+    }
 
-    public static String getContactDataTableName() { return "contactData"; }
+    public static String getContactDataTableName() {
+        return "contactData";
+    }
 
-    public static String getFinancialDataTableName() { return "financialData"; }
+    public static String getFinancialDataTableName() {
+        return "financialData";
+    }
 
-    public static String getDocumentsDataTableName() { return "documentsData"; }
+    public static String getDocumentsDataTableName() {
+        return "documentsData";
+    }
 
-    public static String getPasswordDataTableName() { return "passwordData"; }
+    public static String getPasswordDataTableName() {
+        return "passwordData";
+    }
 
-    public static String getCurrentDate(){
+    public static String getCurrentDate() {
         return new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss.MS").format(new Date());
     }
-    
-    public static String getReportGenerationPath(){
-        return System.getProperty("user.dir") +"/test-output/Report_" + ApplicationSettings.getSuiteExecutionStartTime() + "/test-report-" + ApplicationSettings.getCurrentDate() + ".html";
+
+    public static String getReportGenerationPath() {
+        return System.getProperty("user.dir") + "/test-output/Report_" + ApplicationSettings.getSuiteExecutionStartTime() + "/test-report-" + ApplicationSettings.getCurrentDate() + ".html";
     }
 
-    public static String getExtentConfigPath(){
-        return System.getProperty("user.dir")+"\\extent-config.xml";
+    public static String getExtentConfigPath() {
+        return System.getProperty("user.dir") + "\\extent-config.xml";
     }
 
     // Get Drag nad drop js file
     public static String getDragAndDropJsFile() {
         return "src//helper//DragAndDrop.js";
     }
-    
-	public static String getImageFolderPath() {
-		return imageFolderPath;
-	}
 
-	public static void setImageFolderPath(String imageFolderPath) {
-		ApplicationSettings.imageFolderPath = imageFolderPath;
-	}
-	
-	public final static String getSuiteExecutionStartTime(){
+    public static String getImageFolderPath() {
+        return imageFolderPath;
+    }
+
+    public static void setImageFolderPath(String imageFolderPath) {
+        ApplicationSettings.imageFolderPath = imageFolderPath;
+    }
+
+    public final static String getSuiteExecutionStartTime() {
         return startTime;
     }
 
-	
-	public static String getAliasEmailAddress(String email){
-        
-		String aliasEmailAddress = email + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "@gmail.com";
-		
-		emailAddress = aliasEmailAddress;
-		
-		return aliasEmailAddress;
+
+    public static String getAliasEmailAddress(String email) {
+
+        String aliasEmailAddress = email + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "@gmail.com";
+
+        emailAddress = aliasEmailAddress;
+
+        return aliasEmailAddress;
     }
-	
-	public static String getUpdatedActivationMessage(String firstName, String message){
-        
-		String updatedMessage = "Hello " + firstName + message;
-		
-		activationMessage = updatedMessage;
-		
-		return updatedMessage;
+
+    public static String getUpdatedActivationMessage(String firstName, String message) {
+
+        String updatedMessage = "Hello " + firstName + message;
+
+        activationMessage = updatedMessage;
+
+        return updatedMessage;
     }
     public static String getLoginCredentialsTableName(){
         return  "credentials";
     }
-    public static String getSignUpDataTableName()
-    {
+
+    public static String getSignUpDataTableName() {
         return "signUp";
     }
+    public static String getHomeCredentialsTableName(){return "post";}
 
 
-    }
+}
 
 
 

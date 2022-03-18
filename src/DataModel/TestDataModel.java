@@ -7,6 +7,7 @@ public class TestDataModel {
     private String subject;
     private String message;
     private String password;
+    private String post;
 
 
 //    public String getFirstName() {
@@ -131,5 +132,14 @@ public class TestDataModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPost()
+    {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
     }
 }

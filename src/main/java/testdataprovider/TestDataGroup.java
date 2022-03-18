@@ -13,6 +13,11 @@ public class TestDataGroup {
 		else if(group.equalsIgnoreCase("validateSignUpFunctionality")) {
     		tableName = ApplicationSettings.getSignUpDataTableName();
     	}
+		else if(group.equalsIgnoreCase("validateHomeFunctionality")){
+			tableName = ApplicationSettings.getHomeCredentialsTableName();
+
+
+		}
 
 
 		return tableName;

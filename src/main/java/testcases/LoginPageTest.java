@@ -39,7 +39,7 @@ public class LoginPageTest extends BaseTest {
 
 
             System.out.println("\nStarting signup into the site.\\n");
-           boolean signupResult = loginPage.signup(testData);
+            boolean signupResult = loginPage.signup(testData);
 //            Assert.assertTrue(loginResult, "Login failed");
 
         } catch (Exception ex) {

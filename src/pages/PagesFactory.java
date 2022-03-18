@@ -34,7 +34,10 @@ public final class PagesFactory {
     }
 
 
+    public static HomePage getHomePage() {
+        return GetPage(HomePage.class);
     }
+}
 
 
 
