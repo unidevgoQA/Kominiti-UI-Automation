@@ -50,6 +50,28 @@ public class HomePage extends Base {
     WebElement Walloffame;
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/a[1]/span[1]")
     WebElement Likeapost;
+    @FindBy(xpath = "//div[contains(@class,'infinite-scroll-component')]//div[1]//div[1]//div[1]//div[1]//div[3]//div[1]//div[1]//button[1]//*[name()='svg']//*[name()='path' and contains(@d,'M3 12C4.38')]")
+    WebElement drpdwnPost;
+    @FindBy(xpath = "//div[contains(@class,'show')]//a[2]")
+    WebElement deletePost;
+    @FindBy(xpath = "//div[contains(@class,'infinite-scroll-component')]//div[1]//div[1]//div[1]//div[1]//div[3]//div[1]//div[1]//button[1]//*[name()='svg']//*[name()='path' and contains(@d,'M3 12C4.38')]")
+    WebElement confirmDelete;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]")
+    WebElement EditPost;
+    @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/div[2]/button")
+    WebElement StartTriviabtn;
+    @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[1]/button/svg")
+    WebElement stsrtTrtivia;
+    @FindBy(xpath = "//*[@id=\"body\"]/div[2]/div[2]/div/div/span/span")
+    WebElement CloseTrivia;
+    @FindBy(xpath = "//*[@id=\"body\"]/div[2]/div[2]/div/div/div/div/div[2]/button[2]")
+    WebElement confirmTriviaClose;
+    @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[1]/div[3]/div[2]/button")
+    WebElement startTestbtn;
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/span/img")
+    WebElement closeTest;
+    @FindBy(xpath = "//*[@id=\"app-inner\"]/div[2]/div[2]/div[2]/div/div[1]/button/svg")
+    WebElement Tip;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -59,8 +81,6 @@ public class HomePage extends Base {
 
 
     public boolean home(TestDataModel dataModel) {
-        String post = "Test post";
-
         try {
             int step = 0;
             System.out.println("\n## Started Navigating To The Home Page. ##\n");
@@ -74,7 +94,7 @@ public class HomePage extends Base {
             step++;
             System.out.println("Clicked on the input field");
             implicitlyWait(3);
-            driverActions.typeText(shareWinmind, post);
+            driverActions.typeText(shareWinmind, dataModel.getPost());
             step++;
 
             System.out.println("Shared What's In Mind");
@@ -85,6 +105,40 @@ public class HomePage extends Base {
             //implicitlyWait(2);
             driverActions.clickOnWebElementWithActionsClass(Likeapost);
             System.out.println("Liked A Post");
+            implicitlyWait(10);
+//            driverActions.clickOnWebElementWithActionsClass(drpdwnPost);
+//            driverActions.clickOnWebElementWithActionsClass(EditPost);
+
+            driverActions.clickOnWebElementWithActionsClass(drpdwnPost);
+            driverActions.clickOnWebElementWithActionsClass(deletePost);
+            implicitlyWait(5);
+            driverActions.clickOnWebElementWithActionsClass(confirmDelete);
+            implicitlyWait(20);
+            System.out.println("post deleted");
+
+            driverActions.clickOnWebElementWithActionsClass(StartTriviabtn);
+            System.out.println("Navigated to the Trivia Modal");
+            implicitlyWait(2);
+            driverActions.clickOnWebElementWithActionsClass(stsrtTrtivia);
+            System.out.println("Started Trivia");
+            driverActions.clickOnWebElementWithActionsClass(CloseTrivia);
+            System.out.println("Trivia Closed");
+            implicitlyWait(5);
+            driverActions.clickOnWebElementWithActionsClass(confirmTriviaClose);
+            implicitlyWait(5);
+
+
+            driverActions.clickOnWebElementWithActionsClass(startTestbtn);
+            System.out.println("Navigated to the test modal");
+            implicitlyWait(10);
+            driverActions.clickOnWebElementWithActionsClass(closeTest);
+            System.out.println("Closed test");
+            implicitlyWait(5);
+
+
+            driverActions.clickOnWebElementWithActionsClass(Tip);
+            System.out.println("Navigated to the tip");
+
             driverActions.clickOnWebElementWithActionsClass(joinPicoftheWeekC);
             step++;
             System.out.println("Clicked join now button on pic of the week challenge");
@@ -100,7 +154,6 @@ public class HomePage extends Base {
             step++;
             System.out.println("Navigated to the trending topic");
             driverActions.clickOnWebElementWithActionsClass(Walloffame);
-            step++;
             System.out.println("Navigated to the wall of fame page");
             return true;
 
